@@ -62,6 +62,6 @@ $(document).ready(function () {
   $("#yes").click(function () {
     var audio = new Audio("sound/tick.mp3");
     audio.play();
-    window.location = "https://cuongnobro.github.io/Baby/";
+    window.location = "https://nguyennam1706.github.io/Percas20_10_Flowers/flower.html";
   });
 });

@@ -1,29 +1,47 @@
 .content {
-    position: relative;
-    z-index: 3;
-  }
-  #no{
-    position: absolute;
-    display: inline-block;
-    left: 35%; 
-    top: 40vh;
-    -webkit-transition: all 0.1s ease-out;
-  }
-  #yes{
-    position: absolute;
-    display: inline-block;
-    left: 70%; 
-    top: 40vh;
-    -webkit-transition: all 0.3s ease-out;
-  }
-#bg{
+  position: relative;
+  z-index: 3;
+  overflow: visible; /* đảm bảo không cắt ảnh */
+}
+
+#no {
+  position: absolute;
+  display: inline-flex; /* fix: chỉ bao phần text, không tính ảnh */
+  align-items: center;
+  justify-content: center;
+  left: 35%; 
+  top: 40vh;
+  -webkit-transition: all 0.1s ease-out;
+  overflow: visible; /* cho phép ảnh lòi ra */
+  z-index: 10; /* để nằm trên nền */
+}
+
+#no .no-img {
+  position: absolute;
+  bottom: -60px; /* cho ảnh trồi ra dưới nút */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 83px;
+  pointer-events: none; /* ảnh không ảnh hưởng click */
+}
+
+#yes {
+  position: absolute;
+  display: inline-block;
+  left: 70%; 
+  top: 40vh;
+  -webkit-transition: all 0.3s ease-out;
+  z-index: 10;
+}
+
+#bg {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   opacity: .8;
-  /* height: 100vh; */
   z-index: 0;
   background-repeat: no-repeat;
   background-color: pink;
@@ -31,9 +49,11 @@
   background-position: 50%;
   -webkit-filter: blur(4px);
 }
-.swal2-title, .swal2-content{
+
+.swal2-title, .swal2-content {
   color: azure !important;
 }
+
 .swal2-popup {
   border-radius: 15px !important;
 }
@@ -42,9 +62,10 @@ header h2 {
   font-family: 'Pacifico';
   font-size: 70px;
   text-align: center;
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
+/* --- Responsive cho mobile --- */
 @media only screen and (max-width: 500px) {
   header h2 {
     font-family: 'Pacifico';
@@ -52,16 +73,32 @@ header h2 {
     text-align: center;
     margin-bottom: 30px;
   }
-  #no{
+
+  #no {
     position: absolute;
-    display: inline-block;
+    display: inline-flex; /* vẫn giữ để co đúng text */
+    align-items: center;
+    justify-content: center;
     left: 7%; 
     top: 40vh;
     font-size: 14px;
     padding: 3px;
     -webkit-transition: all 0.1s ease-out;
+    overflow: visible;
+    z-index: 10;
   }
-  #yes{
+
+  #no .no-img {
+    position: absolute;
+    bottom: -83px; /* ảnh trồi ra dưới */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 83px;
+    pointer-events: none;
+  }
+
+  #yes {
     position: absolute;
     display: inline-block;
     left: 58%; 
@@ -69,5 +106,6 @@ header h2 {
     font-size: 14px;
     padding: 3px;
     -webkit-transition: all 0.3s ease-out;
+    z-index: 10;
   }
 }

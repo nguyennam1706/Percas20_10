@@ -16,6 +16,7 @@ $(document).ready(function () {
 
   $("#text3").html(textConfig.text3);
   $("#no").html(textConfig.text5);
+  $("#no").append('<br><br><img class="no-img" src="img/XBGioTay.png" alt="XBGioTay" ">');
   $("#yes").html(textConfig.text6);
 
   // switch button position
